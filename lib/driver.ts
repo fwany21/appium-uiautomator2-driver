@@ -426,7 +426,7 @@ class AndroidUiautomator2Driver
     // ADB instance
     this.adb = await androidHelpers.createADB(this.opts);
     try {
-      if (await this.adb.isRoot()) {
+      if (!(await this.adb.isRoot())) {
         this.log.warn(`This is not Root device. I will root it!`);
         await this.adb.root();
         await this.adb.waitForDevice(30);
